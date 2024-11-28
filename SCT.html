@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Example Page</title>
+    <style>
+        .code-container {
+            display: none;
+            margin-top: 20px;
+            background-color: #f4f4f4;
+            padding: 15px;
+            border-radius: 5px;
+            font-family: monospace;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Code Example Page</h1>
+
+    <!-- Button for SLNN Code -->
+    <button onclick="showCode('slnn')">Show SLNN Code</button>
+
+    <!-- Button for Bipolar Code -->
+    <button onclick="showCode('bipolar')">Show Bipolar Code</button>
+
+    <!-- SLNN Code Example (Initially Hidden) -->
+    <div id="slnn" class="code-container">
+        <h2>SLNN Code Example</h2>
+        <pre>
+            import math
+            print("Practical 1(A) performed by Prerana Jadhav")
+            x = int(input("Enter the value of x "))
+            b = int(input("Enter the value for bias "))
+            w = int(input("Enter the value for weight "))
+            ynet = w * x + b
+            print("Net Input =", ynet)
+            print("Apply Activation Function over net input, Ramp Function")
+            if ynet < 0:
+                output = 0
+            elif ynet >= 0 and ynet <= 1:
+                output = ynet
+            else:
+                output = 1
+            print("output =", output)
+        </pre>
+    </div>
+
+    <!-- AND/NOT function using McCulloch-Pitts neural net Example (Initially Hidden) -->
+    <div id="bipolar" class="code-container">
+        <h2>AND/NOT function using McCulloch-Pitts neural net</h2>
+        <pre>
+            import math
+            print("Practical 1(B) performed by Prerana Jadhav")
+            n = int(input("Enter no. of input neurons: "))
+            print("Enter input")
+            inputs = []
+            for i in range(0, n):
+                x = float(input())
+                inputs.append(x)
+            print(inputs)
+            print("Enter weight")
+            weights = []
+            for i in range(0, n):
+                w = float(input())
+                weights.append(w)
+            print(weights)
+            print("The net input can be calculated as Yin=x1w1+x2w2+x3w3")
+            Yin = []
+            for i in range(0, n):
+                Yin.append(inputs[i] * weights[i])
+            ynet = round(sum(Yin), 3)
+            print("Net input for y neuron =", ynet)
+            print("Apply activation function over net input A) Binary Sigmoid activation function")
+            y = round(1 / (1 + math.exp(-ynet)), 3)
+            print(y)
+            print("Apply activation function over net input B) Bipolar Sigmoid activation function")
+            y = round((2 / (1 + math.exp(-ynet))) - 1, 3)
+            print(y)
+        </pre>
+    </div>
+
+
+              <!-- AND/NOT function using McCulloch-Pitts neural net (Initially Hidden) -->
+    <div id="AND/NOT function using McCulloch-Pitts neural netr" class="code-container">
+        <h2>AND/NOT function using McCulloch-Pitts neural net Example</h2>
+        <pre>
+            # Generate XOR function using McCulloch-Pitts neural net. print("Practical performed by Roll No.:10 Prerana Jadhav")
+
+
+import numpy as np print("enter weights") w11=int(input('weight w11=')) w12=int(input('weight w12=')) w21=int(input('weight w21=')) w22=int(input('weight w22=')) v1=int(input('weight v1=')) v2=int(input('weight v2=')) print('Enter threshold Values')
+theta=int(input('theta=')) x1=np.array([0,0,1,1])
+x2=np.array([0,1,0,1])
+
+z=np.array([0,1,1,0])
+
+y1=np.zeros((4,))
+
+y2=np.zeros((4,))
+
+y=np.zeros((4,))
+
+zin1=np.zeros((4,))
+
+zin2=np.zeros((4,)) zin1=x1*w11+x2*w21 zin2=x1*w21+x2*w22 print("z1",zin1)
+print("z2",zin2) for i in range(0,4):
+if zin1[i]>=theta: y1[i]=1
+else:
+
+y1[i]=0
+
+if zin2[i]>=theta: y2[i]=1
+else:
+
+y2[i]=0
+yin=np.array([]) yin=y1*v1+y2*v2 for i in range(0,4):
+if yin[i]>=theta: y[i]=1
+else:
+
+y[i]=0 print("yin",yin) print('output of net') y=y.astype(int) print("y",y)
+print("z",z)
+
+        </pre>
+    </div>
+    <script>
+        function showCode(codeId) {
+            var codeElements = document.querySelectorAll('.code-container');
+            // Hide all code sections
+            codeElements.forEach(function (element) {
+                element.style.display = 'none';
+            });
+            // Show the selected code
+            document.getElementById(codeId).style.display = 'block';
+        }
+    </script>
+
+</body>
+</html>
